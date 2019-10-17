@@ -1,5 +1,19 @@
 # peanuts
 
+## quick start
+
+```
+// install 
+npm install peanut-js
+
+// usage
+import Peanut  from 'peanut-js';
+Peanut.add(1,1) // 2
+```
+
+## [document](https://alanwen2016.github.io/peanuts/global.html)
+
+
 ## Project setup
 ```
 npm install
