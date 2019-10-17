@@ -1,11 +1,7 @@
-/** Used as references for various `Number` constants. */
 const INFINITY = 1 / 0
-
 /**
- * Converts `value` to a string. An empty string is returned for `null`
- * and `undefined` values. The sign of `-0` is preserved.
  *
- * @since 4.0.0
+ * 将函数转换为字符串， undefined, null将返回空值，-0返回'-0'
  * @param {*} value The value to convert.
  * @returns {string} Returns the converted string.
  * @example

@@ -39,7 +39,9 @@ function setStorage(key, value) {
 }
 
 /**
- * 存储sessionStorage
+ *  存储sessionStorage
+ * @param name 键
+ * @param content 值，可以不为字符串
  */
 const setSessionStorage = (name, content) => {
     if (!name) return;
@@ -51,6 +53,8 @@ const setSessionStorage = (name, content) => {
 
 /**
  * 获取sessionStorage
+ * @param name 键
+ * @return 返回结果或者无结果返回null
  */
 const getSessionStorage = name => {
     if (!name) return;
@@ -63,12 +67,19 @@ const getSessionStorage = name => {
 
 /**
  * 删除sessionStorage
+ * @param name
+ *
  */
 const removeSessionStorage = name => {
     if (!name) return;
     window.sessionStorage.removeItem(name);
 };
 
+/**
+ * 读取cookie值
+ * @param name
+ * @return {*}
+ */
 function getCookie(name){
     let arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
     if(arr=document.cookie.match(reg))
@@ -76,6 +87,13 @@ function getCookie(name){
     else
         return '';
 }
+
+/**
+ * 设置cookie值
+ * @param name 键名
+ * @param value 键值
+ * @param {int} days 天数
+ */
 function setCookie(name,value,days){
     if (days) {
         let date = new Date();
@@ -84,14 +102,19 @@ function setCookie(name,value,days){
     }else{
         let expires = "";
     }
-    document.cookie = name+"="+value+expires+"; path=/;domain=qq.com";
+    document.cookie = name+"="+value+expires+"; path=/";
 }
+
+/**
+ * 删除cookie值
+ * @param name
+ */
 function delCookie(name) {
     let exp = new Date();
     exp.setTime(exp.getTime() - 1);
     let cval= getCookie(name);
     if(cval!='')
-        document.cookie= name + "="+cval+";expires="+exp.toGMTString()+"; path=/;domain=qq.com";
+        document.cookie= name + "="+cval+";expires="+exp.toGMTString()+"; path=/";
 }
 
 

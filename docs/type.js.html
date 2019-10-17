@@ -27,7 +27,7 @@
 
 <nav >
     
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#getBrowser">getBrowser</a></li><li><a href="global.html#getSessionStorage">getSessionStorage</a></li><li><a href="global.html#getStorage">getStorage</a></li><li><a href="global.html#INFINITY">INFINITY</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isDate">isDate</a></li><li><a href="global.html#isDom">isDom</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isObject">isObject</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#ltrim">ltrim</a></li><li><a href="global.html#nest">nest</a></li><li><a href="global.html#numFormat">numFormat</a></li><li><a href="global.html#removeSessionStorage">removeSessionStorage</a></li><li><a href="global.html#rtrim">rtrim</a></li><li><a href="global.html#setSessionStorage">setSessionStorage</a></li><li><a href="global.html#setStorage">setStorage</a></li><li><a href="global.html#shuffle">shuffle</a></li><li><a href="global.html#toString">toString</a></li><li><a href="global.html#toThousandsFilter">toThousandsFilter</a></li><li><a href="global.html#trim">trim</a></li><li><a href="global.html#validate">validate</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#add">add</a></li><li><a href="global.html#delCookie">delCookie</a></li><li><a href="global.html#getBrowser">getBrowser</a></li><li><a href="global.html#getCookie">getCookie</a></li><li><a href="global.html#getSessionStorage">getSessionStorage</a></li><li><a href="global.html#getStorage">getStorage</a></li><li><a href="global.html#isArray">isArray</a></li><li><a href="global.html#isBoolean">isBoolean</a></li><li><a href="global.html#isDate">isDate</a></li><li><a href="global.html#isDom">isDom</a></li><li><a href="global.html#isFunction">isFunction</a></li><li><a href="global.html#isNumber">isNumber</a></li><li><a href="global.html#isObject">isObject</a></li><li><a href="global.html#isString">isString</a></li><li><a href="global.html#isUndefined">isUndefined</a></li><li><a href="global.html#ltrim">ltrim</a></li><li><a href="global.html#nest">nest</a></li><li><a href="global.html#numFormat">numFormat</a></li><li><a href="global.html#removeSessionStorage">removeSessionStorage</a></li><li><a href="global.html#rtrim">rtrim</a></li><li><a href="global.html#setCookie">setCookie</a></li><li><a href="global.html#setSessionStorage">setSessionStorage</a></li><li><a href="global.html#setStorage">setStorage</a></li><li><a href="global.html#shuffle">shuffle</a></li><li><a href="global.html#toString">toString</a></li><li><a href="global.html#toThousandsFilter">toThousandsFilter</a></li><li><a href="global.html#trim">trim</a></li><li><a href="global.html#validate">validate</a></li></ul>
 </nav>
 
 <div id="main">
@@ -45,7 +45,7 @@
             <pre class="prettyprint source linenums"><code>/**
  * 获取对象类型
  * @private
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {string} 类型
  * 可判断类型：Boolean Number String Function Array Date RegExp Object
  */
@@ -56,7 +56,7 @@ function getParamType(obj){
 /**
  * @description 判断对象是否定义
  * 其实只对对象中的元素判断有效，如是纯变量，此方法会无法调用，需要外面加try
- * @param {object} object 对象
+ * @param {object} o - object 对象
  * @return {bool} 是/否
  */
 function isUndefined (o){
@@ -64,7 +64,7 @@ function isUndefined (o){
 }
 /**
  * @description 判断对象是否数组
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
 function isArray(obj) {
@@ -72,7 +72,7 @@ function isArray(obj) {
 }
 /**
  * @description 判断对象是否函数
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
 function isFunction(obj){
@@ -81,7 +81,7 @@ function isFunction(obj){
 
 /**
  * @description 判断对象是否对象
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
  function isObject(obj) {
@@ -89,7 +89,7 @@ function isFunction(obj){
 }
 /**
  * @description 判断对象是否数值
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
 function isNumber(obj) {
@@ -97,7 +97,7 @@ function isNumber(obj) {
 }
 /**
  * @description 判断对象是否字符串
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
 function isString(obj) {
@@ -105,7 +105,7 @@ function isString(obj) {
 }
 /**
  * @description 判断是否布尔值
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
 function isBoolean(obj) {
@@ -113,15 +113,15 @@ function isBoolean(obj) {
 }
 /**
  * @description 判断对象是否日期
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
-function isDate() {
+function isDate(obj) {
     return getParamType(obj).toLowerCase() === "date";
 }
 /**
  * @description 判断对象是否DOM元素
- * @param {object} obj DOM对象
+ * @param {object} obj - obj DOM对象
  * @return {bool} 是/否
  */
 function isDom(obj) {
@@ -161,7 +161,7 @@ export {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Oct 17 2019 16:51:35 GMT+0800 (中国标准时间) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> on Thu Oct 17 2019 17:52:59 GMT+0800 (中国标准时间) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>

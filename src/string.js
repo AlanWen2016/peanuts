@@ -25,7 +25,7 @@ function trim(str){
 
 
 /**
- *
+ * 数字转千分位
  * @param {*} num
  * @returns {String}
  */

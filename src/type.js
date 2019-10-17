@@ -1,7 +1,7 @@
 /**
  * 获取对象类型
  * @private
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {string} 类型
  * 可判断类型：Boolean Number String Function Array Date RegExp Object
  */
@@ -12,7 +12,7 @@ function getParamType(obj){
 /**
  * @description 判断对象是否定义
  * 其实只对对象中的元素判断有效，如是纯变量，此方法会无法调用，需要外面加try
- * @param {object} object 对象
+ * @param {object} o - object 对象
  * @return {bool} 是/否
  */
 function isUndefined (o){
@@ -20,7 +20,7 @@ function isUndefined (o){
 }
 /**
  * @description 判断对象是否数组
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
 function isArray(obj) {
@@ -28,7 +28,7 @@ function isArray(obj) {
 }
 /**
  * @description 判断对象是否函数
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
 function isFunction(obj){
@@ -37,7 +37,7 @@ function isFunction(obj){
 
 /**
  * @description 判断对象是否对象
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
  function isObject(obj) {
@@ -45,7 +45,7 @@ function isFunction(obj){
 }
 /**
  * @description 判断对象是否数值
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
 function isNumber(obj) {
@@ -53,7 +53,7 @@ function isNumber(obj) {
 }
 /**
  * @description 判断对象是否字符串
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
 function isString(obj) {
@@ -61,7 +61,7 @@ function isString(obj) {
 }
 /**
  * @description 判断是否布尔值
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
 function isBoolean(obj) {
@@ -69,15 +69,15 @@ function isBoolean(obj) {
 }
 /**
  * @description 判断对象是否日期
- * @param {object} object 对象
+ * @param {object} obj - object 对象
  * @return {bool} 是/否
  */
-function isDate() {
+function isDate(obj) {
     return getParamType(obj).toLowerCase() === "date";
 }
 /**
  * @description 判断对象是否DOM元素
- * @param {object} obj DOM对象
+ * @param {object} obj - obj DOM对象
  * @return {bool} 是/否
  */
 function isDom(obj) {

@@ -9,9 +9,9 @@ import {ltrim, trim, rtrim, toThousandsFilter, numFormat} from "./string";
  *
  * @param {String} a - 参数a
  * @param {String} b - 参数b
- * @returns {number} number - 返回结果
+ * @returns {number} - 返回结果为数字
  * @example
- * Biu.add(1, 2);
+ * Peanut.add(1, 2);
  * // returns 3
  * @description 两个数字相加.
  */

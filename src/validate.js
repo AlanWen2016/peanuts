@@ -1,7 +1,7 @@
 /**
- * 正则校验
- * @param value
- * @param type
+ * 正则校验常见字符串
+ * @param value 校验的字符串
+ * @param type  正则校验类型（date, qq, number, currency, phone, mail,zipcode,url, idcard）可选
  * @returns {*}
  */
 function validate(value,type){
