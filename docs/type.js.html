@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>toString.js - Documentation</title>
+    <title>type.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,7 +32,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">toString.js</h1>
+    <h1 class="page-title">type.js</h1>
     
 
     
@@ -42,44 +42,111 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/** Used as references for various `Number` constants. */
-const INFINITY = 1 / 0
-
-/**
- * Converts `value` to a string. An empty string is returned for `null`
- * and `undefined` values. The sign of `-0` is preserved.
- *
- * @since 4.0.0
- * @param {*} value The value to convert.
- * @returns {string} Returns the converted string.
- * @example
- *
- * toString(null)
- * // => ''
- *
- * toString(-0)
- * // => '-0'
- *
- * toString([1, 2, 3])
- * // => '1,2,3'
+            <pre class="prettyprint source linenums"><code>/**
+ * 获取对象类型
+ * @private
+ * @param {object} object 对象
+ * @return {string} 类型
+ * 可判断类型：Boolean Number String Function Array Date RegExp Object
  */
-export function toString(value) {
-  if (value == null) {
-    return ''
-  }
-  // Exit early for strings to avoid a performance hit in some environments.
-  if (typeof value == 'string') {
-    return value
-  }
-  if (Array.isArray(value)) {
-    // Recursively convert values (susceptible to call stack limits).
-    return `${value.map((other) => other == null ? other : toString(other))}`
-  }
-  const result = `${value}`
-  return (result == '0' &amp;&amp; (1 / value) == -INFINITY) ? '-0' : result
+function getParamType(obj){
+    return obj == null ? String(obj) :
+        Object.prototype.toString.call(obj).replace(/\[object\s+(\w+)\]/i,"$1") || "object";
+}
+/**
+ * @description 判断对象是否定义
+ * 其实只对对象中的元素判断有效，如是纯变量，此方法会无法调用，需要外面加try
+ * @param {object} object 对象
+ * @return {bool} 是/否
+ */
+function isUndefined (o){
+    return o === undefined &amp;&amp; typeof o == "undefined";
+}
+/**
+ * @description 判断对象是否数组
+ * @param {object} object 对象
+ * @return {bool} 是/否
+ */
+function isArray(obj) {
+    return getParamType(obj).toLowerCase() === "array";
+}
+/**
+ * @description 判断对象是否函数
+ * @param {object} object 对象
+ * @return {bool} 是/否
+ */
+function isFunction(obj){
+    return getParamType(obj).toLowerCase() === "function";
 }
 
-export default toString
+/**
+ * @description 判断对象是否对象
+ * @param {object} object 对象
+ * @return {bool} 是/否
+ */
+ function isObject(obj) {
+    return getParamType(obj).toLowerCase() === "object";
+}
+/**
+ * @description 判断对象是否数值
+ * @param {object} object 对象
+ * @return {bool} 是/否
+ */
+function isNumber(obj) {
+    return getParamType(obj).toLowerCase() === "number";
+}
+/**
+ * @description 判断对象是否字符串
+ * @param {object} object 对象
+ * @return {bool} 是/否
+ */
+function isString(obj) {
+    return getParamType(obj).toLowerCase() === "string";
+}
+/**
+ * @description 判断是否布尔值
+ * @param {object} object 对象
+ * @return {bool} 是/否
+ */
+function isBoolean(obj) {
+    return getParamType(obj).toLowerCase() === "boolean";
+}
+/**
+ * @description 判断对象是否日期
+ * @param {object} object 对象
+ * @return {bool} 是/否
+ */
+function isDate() {
+    return getParamType(obj).toLowerCase() === "date";
+}
+/**
+ * @description 判断对象是否DOM元素
+ * @param {object} obj DOM对象
+ * @return {bool} 是/否
+ */
+function isDom(obj) {
+    try{
+        return obj &amp;&amp; typeof obj === "object" &amp;&amp; !isUndefined(obj.nodeType) &amp;&amp; obj.nodeType==1 &amp;&amp; !isUndefined(obj.nodeName) &amp;&amp; typeof obj.nodeName == "string";
+    }
+    catch(e){
+        //console.log(e)
+        return false;
+    }
+}
+
+
+export {
+    isDom,
+    isArray,
+    isBoolean,
+    isDate,
+    isFunction,
+    isNumber,
+    isObject,
+    isString,
+    isUndefined,
+    getParamType
+}
 </code></pre>
         </article>
     </section>
