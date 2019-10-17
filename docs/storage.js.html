@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>storage.js - Documentation</title>
     
     
     <script src="scripts/prettify/prettify.js"></script>
@@ -32,31 +32,53 @@
 
 <div id="main">
     
+    <h1 class="page-title">storage.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const EXP_TIME = 24 * 1000 * 60 * 60;
+
+function getStorage(key, exp) {
+    exp = exp || EXP_TIME
+    let data = localStorage.getItem(key)
+    if(!data) {
+        localStorage.removeItem(key)
+        return false
+    }
+    data = JSON.parse(data)
+    if(exp &amp;&amp; new Date().getTime() - data.time > exp) {
+        localStorage.removeItem(key)
+        return false
+    }
+    return data.data
+}
+
+/**
+ * @param key
+ * @param value
+ * @returns {number} number - 返回结果
+ * @example
+ * Biu.add(1, 2);
+ * // returns 3
+ * @description 设置localStorage
+ *
+ */
+function setStorage(key, value) {
+    let curTime = new Date().getTime()
+    localStorage.setItem(key, JSON.stringify({data: value, time: curTime}))
+}
 
 
-    <section class="package">
-        <h3> </h3>		
+export { setStorage, getStorage }
+</code></pre>
+        </article>
     </section>
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
 
 
 

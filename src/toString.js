@@ -1,7 +1,7 @@
 /** Used as references for various `Number` constants. */
 const INFINITY = 1 / 0
 
-/** 
+/**
  * Converts `value` to a string. An empty string is returned for `null`
  * and `undefined` values. The sign of `-0` is preserved.
  *
@@ -19,7 +19,7 @@ const INFINITY = 1 / 0
  * toString([1, 2, 3])
  * // => '1,2,3'
  */
-function toString(value) {
+export function toString(value) {
   if (value == null) {
     return ''
   }

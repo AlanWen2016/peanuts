@@ -8,5 +8,5 @@
 6. 时间转换、与moment.js
 7. 校验： 身份证、手机号、邮箱、IP、密码、中英文、敏感词
 8. cookie操作
-9. localStoreage
-10. 二维码生成
+9. localStorage
+10. 
